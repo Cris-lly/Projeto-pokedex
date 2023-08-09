@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -6,15 +6,22 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./pokemon-card.component.css']
 })
 export class PokemonCardComponent implements OnInit {
-  pokemons = ['pokemon', 'squirtle', 'venosaur', 'charmaander'];
-  
+  @Input() numberPokemon = [{name: '', url:""},];
+  @Input() receivedNumber = 0;
   constructor() { }
 
   ngOnInit(): void {
   }
-  formatUrlImage(position:number){
-    const formatNumber = '00'+position
+  formatUrlImage(){
+    const formatNumber = this.leadingZero(this.receivedNumber)
 
     return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber}.png`
+  }
+  leadingZero(value: number, size = 3){
+    let number = String(value);
+    while(number.length < (size || 2)){
+      number = '0'+ number;
+    }
+    return number;
   }
 }

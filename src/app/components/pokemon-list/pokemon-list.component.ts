@@ -8,6 +8,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
   listPokemons= [{name: '', url:""},];
+  numberPokemon = 0;
   position:number = 0;
   constructor(public pokemonService:PokemonService) { }
 
@@ -18,6 +19,9 @@ export class PokemonListComponent implements OnInit {
     
     }
   );
+  }
+  sendNumber(number: number){
+    this.numberPokemon = number+1;
   }
   ngOnInit(): void {
     this.getPokemonInfo();
