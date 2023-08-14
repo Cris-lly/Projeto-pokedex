@@ -8,16 +8,19 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
   listPokemons= [{name: '', url:""},];
+  numberPokemon = 0;
   position:number = 0;
   constructor(public pokemonService:PokemonService) { }
 
   getPokemonInfo(): void {
     this.pokemonService.loadPokemon().subscribe((pokemons) => {
       
-      this.listPokemons = pokemons.results; console.log(this.listPokemons)
-    
+      this.listPokemons = pokemons.results;
     }
   );
+  }
+  sendNumber(number: number){
+    this.numberPokemon = number+1;
   }
   ngOnInit(): void {
     this.getPokemonInfo();

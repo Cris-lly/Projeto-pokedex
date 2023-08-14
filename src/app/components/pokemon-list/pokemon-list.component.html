@@ -1,5 +1,12 @@
-<div *ngFor="let pokemon of listPokemons; index as position" class="text-end">
-    <div class="p-3">
-        <p>{{pokemon.name}}</p>
+<div class="container-fluid  row bg-danger p-0 m-0" >
+    <div class="col-2 bg-white">
+
+        <div *ngFor="let pokemon of listPokemons; index as idPokemon" class="text-end">
+            <div class="p-3">
+                <a href="#" class="list-group-item list-group-item-action" (click)="sendNumber(idPokemon)">nome: {{pokemon.name}} id: {{idPokemon+1}}</a>
+            </div>
+        </div>
     </div>
+    <app-pokemon-card [numberPokemon]="listPokemons"  [receivedNumber]="numberPokemon" class=" container-fluid col-8"></app-pokemon-card>
+
 </div>
