@@ -33,8 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  flex-column m-auto mb-2 mb-lg-0">
                         <li class="nav-item p-1 " *ngFor="let pokemon of listPokemons; index as idPokemon">
-                            <a href="#" class="list-group-item list-group-item-action"
-                                (click)="sendNumber(idPokemon)">{{pokemon.name | titlecase}}</a>
+                            <a href="#" class="list-group-item list-group-item-action" (click)="modifyValue(idPokemon+1)">{{pokemon.name | titlecase}}</a>
                         </li>
                     </ul>
 
@@ -43,8 +42,8 @@
         </nav>
     </div>
 
-
-    <app-pokemon-card [numberPokemon]="listPokemons" [receivedNumber]="numberPokemon"
+    
+    <app-pokemon-card [numberPokemon]="listPokemons" [idPokemon]="(idPokemon$ | async) || 0"
         class=" col-lg-10  col-sm-8 bg-danger"></app-pokemon-card>
 
 </div>

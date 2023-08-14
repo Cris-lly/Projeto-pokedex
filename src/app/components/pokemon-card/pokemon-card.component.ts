@@ -7,7 +7,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonCardComponent implements OnInit {
   @Input() numberPokemon = [{name: '', url:""},];
-  @Input() receivedNumber = 1;
+  @Input() idPokemon = 1;
   imageName=[]
   constructor(public pokemonService: PokemonService) { }
 
@@ -19,9 +19,9 @@ export class PokemonCardComponent implements OnInit {
   }
   
   getImage():void{
-    this.pokemonService.getUrlImage(this.receivedNumber).subscribe((pokemons) => {
+    this.pokemonService.getUrlImage(this.idPokemon).subscribe((pokemons) => {
       
-      this.imageName = pokemons.sprites.other.dream_world.front_default; console.log(this.imageName)
+      this.imageName = pokemons.sprites.other.dream_world.front_default; 
     
     }
   );

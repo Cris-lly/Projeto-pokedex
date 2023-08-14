@@ -9,6 +9,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import {HttpClientModule} from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
 import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({app: appReducer})
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
