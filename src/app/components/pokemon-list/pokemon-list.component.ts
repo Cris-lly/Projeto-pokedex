@@ -15,8 +15,7 @@ export class PokemonListComponent implements OnInit {
   getPokemonInfo(): void {
     this.pokemonService.loadPokemon().subscribe((pokemons) => {
       
-      this.listPokemons = pokemons.results; console.log(this.listPokemons)
-    
+      this.listPokemons = pokemons.results;
     }
   );
   }

@@ -12,8 +12,6 @@ export class PokemonService {
   }
   loadPokemon():Observable<any> {
     const req = this.httpClient.get<any>(this.apiUrl);
-    console.log(req)
-    
     return req
   }
   
