@@ -6,15 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PokemonService {
-  private apiUrl = ' https://pokeapi.co/api/v2/pokemon?limit=100';
+  private apiUrl = ' https://pokeapi.co/api/v2/';
   constructor(private httpClient: HttpClient) { 
     
   }
   loadPokemon():Observable<any> {
-    const req = this.httpClient.get<any>(this.apiUrl);
+    const req = this.httpClient.get<any>(`${this.apiUrl}pokemon?limit=100`);
     console.log(req)
     
     return req
+  }
+  getUrlImage(number:number):Observable<any>{
+    const request = this.httpClient.get<any>(`${this.apiUrl}pokemon/${number}`)
+    console.log(request)
+    return request
   }
   
 }

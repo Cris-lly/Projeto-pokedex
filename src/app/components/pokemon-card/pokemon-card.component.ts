@@ -1,5 +1,5 @@
-import { Component, Input, OnInit} from '@angular/core';
-
+import { Component, Input, OnInit, OnChanges} from '@angular/core';
+import { PokemonService } from 'src/app/services/pokemon.service';
 @Component({
   selector: 'app-pokemon-card',
   templateUrl: './pokemon-card.component.html',
@@ -7,21 +7,24 @@ import { Component, Input, OnInit} from '@angular/core';
 })
 export class PokemonCardComponent implements OnInit {
   @Input() numberPokemon = [{name: '', url:""},];
-  @Input() receivedNumber = 0;
-  constructor() { }
+  @Input() receivedNumber = 1;
+  imageName=[]
+  constructor(public pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    
   }
-  formatUrlImage(){
-    const formatNumber = this.leadingZero(this.receivedNumber)
-
-    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber}.png`
+  ngOnChanges(): void{
+    this.getImage();
   }
-  leadingZero(value: number, size = 3){
-    let number = String(value);
-    while(number.length < (size || 2)){
-      number = '0'+ number;
+  
+  getImage():void{
+    this.pokemonService.getUrlImage(this.receivedNumber).subscribe((pokemons) => {
+      
+      this.imageName = pokemons.sprites.other.dream_world.front_default; console.log(this.imageName)
+    
     }
-    return number;
+  );
+
   }
 }

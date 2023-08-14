@@ -8,6 +8,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 
 import {HttpClientModule} from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PokemonService } from './services/pokemon.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
