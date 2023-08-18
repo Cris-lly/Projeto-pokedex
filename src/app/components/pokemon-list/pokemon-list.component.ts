@@ -22,16 +22,14 @@ export class PokemonListComponent implements OnInit {
     this.store.dispatch(modifyValue({newValue: num}))
   }
   getPokemonInfo(): void {
-    this.pokemonService.loadPokemon().subscribe((pokemons) => {
+    this.pokemonService.loadAllPokemons().subscribe((pokemons) => {
       
-      this.listPokemons = pokemons.results;
+      this.listPokemons = pokemons.results; 
     
     }
   );
   }
-  //sendNumber(number: number){
-    //this.idPokemon = number+1;
-  //}
+  
   ngOnInit(): void {
     this.getPokemonInfo();
   }
