@@ -21,9 +21,8 @@ export class PokemonCardComponent implements OnInit {
   
   getInfoPokemon():void{
     this.pokemonService.loadPokemon(this.idPokemon).subscribe((pokemons) => {   
-      this.pokemon = pokemons; 
+      this.pokemon = pokemons;  console.log(this.pokemon)
     }
   );
-
   }
 }

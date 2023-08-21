@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@media (min-width: 992px) {
+  body {
+    overflow: hidden;
+  }
+}
+*::-webkit-scrollbar {
+    width: 10px;
+  }
+

@@ -1,4 +1,4 @@
-<div class="vh-100">
+<div class="vh-75">
     <div class="row w-100 mt-2">
         <div class="col-4  pokemonBanner  mt-5">
             <img [src]="pokemon?.image" alt="" srcset="" class="mt-5 h-100 w-100">
@@ -6,7 +6,9 @@
         <div class="col-8 mt-lg-5 mh-75">
             <div class="row">
                 <div class=" h-50 mt-3 col-11 m-auto pokemonTitle row">
-                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <h4 class="text-white ms-lg-2 fs-5">{{pokemon?.id}}</h4>
+                    </div>
                     <div class="col-6">
                         <h4 class="text-white ms-lg-2 fs-5">{{pokemon?.name}}</h4>
                     </div>
@@ -16,42 +18,34 @@
             <div class="row  col-10 m-auto">
                 <div class="mt-4 p-0  w-100">
                     <div class="p-0 m-0 col-12 row table-responsive">
-                        <table class="col table table-secondary">
+                        <table class="table table-secondary" >
                             <thead>
-                                <tr>
-                                    <th scope="col">First</th>
-                                </tr>
+                              <tr>
+                                <td scope="col" class="text-center">Type</td>
+                                <td scope="col" class="bg-white">
+                                    <ul>
+                                        <li *ngFor="let type of pokemon?.type">
+                                            {{type}}
+
+                                        </li>
+                                    </ul>
+                                </td>
+                                
+                              </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                </tr>
+                              <tr>
+                                <td scope="row" class="text-center">Height</td>
+                                <td class="bg-white">{{pokemon?.height}}</td>
+                                
+                              </tr>
+                              <tr>
+                                <td scope="row" class="text-center">Weight</td>
+                                <td class="bg-white">{{pokemon?.weight}}</td>
+                                
+                              </tr>
                             </tbody>
-                        </table>
-                        <table class="col table table-white">
-                            <thead>
-                                <tr>
-                                    <th scope="col">First</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                </tr>
-                            </tbody>
-                        </table>
+                          </table>
                     </div>
                 </div>
             </div>

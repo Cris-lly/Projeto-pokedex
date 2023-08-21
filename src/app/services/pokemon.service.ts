@@ -22,8 +22,10 @@ export class PokemonService {
         return{
           id: Pokemon.id,
           name: Pokemon.name,
-          image: Pokemon.sprites.other.dream_world.front_default
-
+          image: Pokemon.sprites.other.dream_world.front_default,
+          type: Pokemon.types.map( (type:any) => { return type.type.name }),
+          height: Pokemon.height ,
+          weight: Pokemon.weight,
         }
       }
       )
