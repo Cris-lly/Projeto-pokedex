@@ -29,7 +29,7 @@ export class PokemonCardComponent implements OnInit {
   }
   getDescription(){
     this.pokemonService.loadDescription(this.idPokemon).subscribe((pokemon) =>{
-      this.pokemonDescription = pokemon.flavor_text_entries[6].flavor_text      ; console.log(this.pokemonDescription)
+      this.pokemonDescription = pokemon.flavor_text_entries[6].flavor_text;
     })
   }
   convertToLbs(num: number | undefined):number{
