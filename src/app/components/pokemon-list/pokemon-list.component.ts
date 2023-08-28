@@ -12,6 +12,8 @@ import { IAppState, modifyValue } from 'src/app/store/app.state';
 export class PokemonListComponent implements OnInit {
   listPokemons= [{name: '', url:""},];
   imagePokemon = ['',]
+  selectOption:string = ''
+  searchText:string = ''
   constructor(public pokemonService:PokemonService, private store: Store<{app: IAppState}>) { }
   
   idPokemon$ = this.store.select('app')
@@ -30,10 +32,11 @@ export class PokemonListComponent implements OnInit {
     }
   );
   }
-  
-  showImage(){
-
+  filteredItems(): {name:string , url:string}[] {
+    
+    return this.listPokemons.filter(item => item.name.toLowerCase().includes(this.searchText.toLowerCase())); 
   }
+  
   ngOnInit(): void {
     this.getPokemonInfo();
   }
