@@ -38,20 +38,6 @@ export class PokemonListComponent implements OnInit {
       this.listPokemons = this.removeElementById(0, this.listPokemons);
     });
   }
-
-  loadAllType(): void {
-    this.pokemonService.loadAllType().subscribe((pokemons) => {
-      pokemons.results.forEach((pokemon: any, i: number) => {
-        this.listTypes.push({
-          name: pokemon.name,
-          url: pokemon.url,
-          id: i + 1,
-        });
-      });
-      this.listTypes = this.removeElementById(0, this.listTypes);
-      console.log(this.listTypes)
-    });
-  }
   filteredItems(selectType: string): { name: string; url: string; id: number }[] {
     if(selectType == 'name'){
       return this.listPokemons.filter((item) =>
@@ -60,10 +46,6 @@ export class PokemonListComponent implements OnInit {
     }else if(selectType == 'number'){
       return this.listPokemons.filter((item) =>
         item.id == this.searchNumber
-      );
-    }else if(selectType == 'type'){
-      return this.listTypes.filter((item) =>
-        item.name.toLowerCase().includes(this.searchText.toLowerCase())
       );
     }else{
       return this.listPokemons
@@ -77,6 +59,5 @@ export class PokemonListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getPokemonInfo();
-    this.loadAllType();
   }
 }

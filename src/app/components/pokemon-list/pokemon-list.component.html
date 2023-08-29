@@ -63,15 +63,9 @@
                                     <select [(ngModel)]="selectOption" name="selectOption" class="form-select mt-1"
                                         aria-label="Default select example">
                                         <option value="" selected>Select option</option>
-                                        <option value="type">Type</option>
                                         <option value="number">Number</option>
                                         <option value="name">Name</option>
                                     </select>
-                                </div>
-                                <div class="mb-3" *ngIf="selectOption == 'type' and selectOption != '' ">
-                                    <label for="searchPokemon" class="form-label">Type the {{selectOption}}:</label>
-                                    <input [(ngModel)]="searchText" name="searchText" type="text" class="form-control" id="searchPokemon"
-                                    >
                                 </div>
                                 <div class="mb-3" *ngIf="selectOption == 'number' and selectOption != '' ">
                                     <label for="searchPokemon" class="form-label">Type the {{selectOption}}:</label>
