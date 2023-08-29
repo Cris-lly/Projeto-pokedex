@@ -32,16 +32,16 @@
                             </select>
                             <div class="listHome mt-3" >
                                 <ul class="ps-4 pe-4  no-list-marker scrollBar h-100">
-                                    <li *ngFor="let pokemon of listPokemons; index as idPokemon">
+                                    <li *ngFor="let pokemon of listPokemons;">
                                         <a href="#" class=" list-group-item list-group-item-action text-start"
-                                            (click)="modifyValue(idPokemon+1)">
+                                            (click)="modifyValue(pokemon.id)">
                                             <div class="row linkPokemon">
             
                                                 <div class="col-6">
             
-                                                    <p class="m-0  p-1"><img [src]="pokemonService.showImage(idPokemon+1)"
+                                                    <p class="m-0  p-1"><img [src]="pokemonService.showImage(pokemon.id)"
                                                             class="iconNavPokemon" srcset="">No.
-                                                        {{pokemonService.renamePokemonNumber(idPokemon+1)}}</p>
+                                                        {{pokemonService.renamePokemonNumber(pokemon.id)}}</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="m-0 pt-2">{{pokemon.name | titlecase}}</p>
@@ -68,33 +68,41 @@
                                         <option value="name">Name</option>
                                     </select>
                                 </div>
-                                <div class="mb-3" *ngIf="selectOption != '' ">
+                                <div class="mb-3" *ngIf="selectOption == 'type' and selectOption != '' ">
                                     <label for="searchPokemon" class="form-label">Type the {{selectOption}}:</label>
-                                    <input [(ngModel)]="searchText" name="searchText" type="text" class="form-control" id="searchPokemon">
-                                
+                                    <input [(ngModel)]="searchText" name="searchText" type="text" class="form-control" id="searchPokemon"
+                                    >
+                                </div>
+                                <div class="mb-3" *ngIf="selectOption == 'number' and selectOption != '' ">
+                                    <label for="searchPokemon" class="form-label">Type the {{selectOption}}:</label>
+                                    <input [(ngModel)]="searchNumber" name="searchText" type="text" class="form-control" id="searchPokemon"
+                                    >
+                                </div>
+                                <div class="mb-3" *ngIf="selectOption == 'name' and selectOption != '' ">
+                                    <label for="searchPokemon" class="form-label">Type the {{selectOption}}:</label>
+                                    <input [(ngModel)]="searchText" name="searchText" type="text" class="form-control" id="searchPokemon"
+                                    >
                                 </div>
                             </form>
                             <div class="listFilter mt-3">
-                                <ul class="ps-4 pe-4  no-list-marker scrollBar h-100">
-                                    <li  *ngFor="let pokemon of filteredItems(); index as idPokemon">
+                                <ul class="ps-4 pe-4  no-list-marker scrollBar h-100" >
+                                    <li  *ngFor="let pokemon of filteredItems(selectOption);">
                                         <a href="#" class=" list-group-item list-group-item-action text-start"
-                                            (click)="modifyValue(idPokemon+1)">
+                                            (click)="modifyValue(pokemon.id)">
                                             <div class="row linkPokemon">
-            
                                                 <div class="col-6">
-            
-                                                    <p class="m-0  p-1"><img [src]="pokemonService.showImage(idPokemon+1)"
+                                                    <p class="m-0  p-1"><img [src]="pokemonService.showImage(pokemon.id)"
                                                             class="iconNavPokemon" srcset="">No.
-                                                        {{pokemonService.renamePokemonNumber(idPokemon+1)}}</p>
+                                                        {{pokemonService.renamePokemonNumber(pokemon.id)}}</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="m-0 pt-2">{{pokemon.name | titlecase}}</p>
-            
-            
+                                                    
+                                                    <p class="m-0 pt-2 text-end">{{pokemon.name | titlecase}}</p>
+
+                                                    
                                                 </div>
                                             </div>
                                         </a>
-    
                                     </li>
                                 </ul>
                             </div>
