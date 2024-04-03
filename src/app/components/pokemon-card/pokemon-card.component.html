@@ -1,5 +1,67 @@
-<div class="bg-danger vh-100">
-    <div>
-        <img [src]="formatUrlImage()" alt="" srcset=""> 
+<div class="vh-75">
+    <div class="row w-100 mt-2">
+        <div class="col-4  pokemonBanner  mt-5">
+            <img [src]="pokemon?.image" alt="" srcset="" class="mt-5 h-100 w-100">
+        </div>
+        <div class="col-8 mt-lg-5 mh-75">
+            <div class="row">
+                <div class=" h-50 mt-3 col-11 m-auto pokemonTitle row m-0 p-0">
+                    <div class="col-6 m-0 p-0">
+
+                        
+                        <img [src]="pokemon?.icon" srcset="" class="d-inline pokemonIcon">
+                        
+                        <h4 class="text-white fs-5 d-inline">
+                            No. {{pokemonService.renamePokemonNumber(idPokemon)}}
+                        </h4>
+
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <h4 class="text-white fs-5">{{pokemon?.name | titlecase}}</h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row  col-10 m-auto">
+                <div class="mt-4 p-0  w-100">
+                    <div class="p-0 m-0 col-12 row table-responsive">
+                        <table class="table table-secondary">
+                            <thead>
+                                <tr>
+                                    <td scope="col" class="text-center">Type</td>
+                                    <td scope="col" class="bg-white">
+                                        <ul class="d-flex align-items-center m-0 p-0">
+                                            <li *ngFor="let type of pokemon?.type" class="d-inline bg-dark rounded text-white m-1 p-2">
+                                                {{type | uppercase}}
+
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row" class="text-center">Height</td>
+                                    <td class="bg-white">{{pokemon?.height}}m</td>
+
+                                </tr>
+                                <tr>
+                                    <td scope="row" class="text-center">Weight</td>
+                                    <td class="bg-white">{{pokemon?.weight}}kg / {{convertToLbs(pokemon?.weight)}} lbs.</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row bg-white p-2 col-10 m-auto">
+                <p class="text-center">
+                    {{pokemonDescription}}
+                </p>
+
+            </div>
+        </div>
     </div>
 </div>

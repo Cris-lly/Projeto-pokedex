@@ -1,27 +1,41 @@
-import { Component, Input, OnInit} from '@angular/core';
-
+import { Component, Input, OnInit, OnChanges} from '@angular/core';
+import { Observable } from 'rxjs';
+import { Pokemon } from 'src/app/models/pokemon.model';
+import { PokemonService } from 'src/app/services/pokemon.service';
 @Component({
   selector: 'app-pokemon-card',
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.css']
 })
 export class PokemonCardComponent implements OnInit {
-  @Input() numberPokemon = [{name: '', url:""},];
-  @Input() receivedNumber = 0;
-  constructor() { }
+  @Input() listPokemons = [{name: '', url:"", id:0},];
+  @Input() idPokemon = 1;
+  pokemon?: Pokemon;
+  pokemonDescription= ['',]
+  constructor(public pokemonService: PokemonService) { }
 
   ngOnInit(): void {
   }
-  formatUrlImage(){
-    const formatNumber = this.leadingZero(this.receivedNumber)
-
-    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatNumber}.png`
+  ngOnChanges(): void{
+    this.getInfoPokemon();
+    this.getDescription();
   }
-  leadingZero(value: number, size = 3){
-    let number = String(value);
-    while(number.length < (size || 2)){
-      number = '0'+ number;
+  
+  getInfoPokemon():void{
+    this.pokemonService.loadPokemon(this.idPokemon).subscribe((pokemons) => {   
+      this.pokemon = pokemons;
     }
-    return number;
+  );
+  }
+  getDescription(){
+    this.pokemonService.loadDescription(this.idPokemon).subscribe((pokemon) =>{
+      this.pokemonDescription = pokemon.flavor_text_entries[6].flavor_text;
+    })
+  }
+  convertToLbs(num: number | undefined):number{
+    if(num === undefined){
+      return 0
+    }
+    return parseFloat((num*2.2).toFixed(2))
   }
 }

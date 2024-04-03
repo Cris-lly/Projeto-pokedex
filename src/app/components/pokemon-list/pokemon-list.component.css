@@ -1,0 +1,43 @@
+/* Personalizando a altura da barra de rolagem */
+.scrollBar {
+  overflow: auto;
+  overflow-x: hidden;
+}
+.scrollBar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: #f9ecdf; /* Cor de fundo da trilha */
+  border-radius: 20px;
+}
+.scrollBar::-webkit-scrollbar-thumb {
+  background: #fa6b50; /* Cor da alça da barra de rolagem */
+  border-radius: 20px;
+}
+
+.listHome{
+  height: 68vh;
+}
+.listFilter{
+  height: 40vh;
+}
+.no-list-marker {
+  list-style-type: none; /* Remover marcador */
+  padding-left: 0; /* Remover espaço padrão */
+}
+.btn-filter{
+  
+  background-color:  #fa6b50 !important; 
+  color: #fff;
+}
+
+.linkPokemon:hover {
+  background: linear-gradient(135deg, #f9442c 50%, black 50%);
+  color: #fff;
+  border-radius: 1.5rem;
+}
+
+.iconNavPokemon{
+  width: 40%;
+}
